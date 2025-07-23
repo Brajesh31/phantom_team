@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom-Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="icon/favicon.png" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            backdrop-filter: blur(0rem);
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            padding: 0 20px;
+            z-index: 1000;
+            border-radius: 0 0 30% 30%;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        header p {
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 0;
+            font-family: Cursive;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0073e6;
+            }
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        header nav a:hover {
+            color: #ddd;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header nav {
+                display: none;
+            }
+            header{
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                padding: 0;
+            }
+            header p{
+                text-align: center;
+            }
+        }
+
+        section {
+            height: 100dvh;
+            width: 100%;
+            background: #f4f4f4;
+            display: flex;
+            font-size: 2rem;
+            color: #333;
+            
+        }
+
+        #Home {
+            background-image: url('background/pexels-andre-furtado-43594-2916821.jpg');
+            background-size: cover;
+            background-position: center;
+            justify-content: flex-start;
+            align-items: center;
+            color: #fff;
+            height: 100dvh;
+            display: flex;
+            margin: 0;
+            transition: background-image 1s ease-in-out;
+        }
+
+        #Home div {
+            margin-left: 10%;
+            text-shadow: #000 1px 1px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #Home div h4 {
+            animation: bounceIn 1s ease-out;
+        }
+
+        #Home div h1 {
+            animation: slideInRight 1s ease-out 0.3s both;
+        }
+
+        #Home div p {
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            70% {
+                transform: scale(0.9);
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        #Home div a {
+            background-color: #000;
+            border: 2px solid #000;
+            border-radius: 50px;
+            font-size: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            margin: 10px 10px 0 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #Home div a:hover {
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        #Aboutus {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0 30px 0;
+            background-color: #fff;
+        }
+
+        #Aboutus .cont {
+            height: 90dvh;
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .img {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #Aboutus div img {
+            max-width: 90%;
+            max-height: auto;
+            border-radius: 3px;
+            transition: all 0.5s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        #Aboutus .text {
+            width: 50%;
+        }
+
+        #Aboutus .text h4 {
+            font-size: 2rem;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        #Aboutus .text p,#Aboutus .text li {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            #Aboutus .cont {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #Aboutus .text {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            #Aboutus div img {
+                max-width: 80%;
+                max-height: 500px;
+            }
+
+            #Aboutus .img {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        #OurServices{
+            display: flex;
+            justify-content: center;
+            height: 700px;
+            position: relative;
+        }
+        #OurServices .cont{
+            width: 90%;
+
+        }
+        #OurServices .cont .text{
+            text-align: center;
+            
+            top: 0;
+        }
+        #OurServices .item {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #OurServices .service-item {
+            flex: 1 1 calc(50% - 40px);
+            background-color: #f9f9f9;
+            text-align: left;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            border: #000 1px solid;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #OurServices .service-item:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        #OurServices .service-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            #OurServices .item {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+        }
+        #OurServices .text h4 {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        #OurPortfolio {
+            height: auto;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #OurPortfolio .cont {
+            display: flex;
+            justify-content: center;
+        }
+
+        #OurPortfolio .text {
+            text-align: center;
+        }
+
+        #OurPortfolio .item {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+        }
+
+        #OurPortfolio .item .img {
+            display: grid;
+            width: 90%;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Default layout for larger screens */
+            gap: 20px;
+            padding: 20px;
+            justify-items: center;    
+        }
+
+        #OurPortfolio .item .img img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #OurPortfolio .item .img img:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        img{
+            cursor: pointer;
+        }
+        /* Mobile view adjustments */
+        @media (max-width: 768px) {
+            #OurPortfolio .item .img {
+                display: grid;
+                width: 85%;
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Single column on mobile */
+                gap: 15px; /* Reduced gap for mobile */
+                padding: 10px; /* Less padding on mobile */
+                justify-items: center;    
+            }
+
+            #OurPortfolio .item .img img {
+                border-radius: 5px; /* Slightly rounded corners for mobile */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Smaller shadow on mobile */
+            }
+        }
+        #OurPortfolio .text h4 {
+            animation: wave 2s infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-5deg);
+            }
+            75% {
+                transform: rotate(5deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        #Contact {
+            background-image: url("background/pexels-lazarus-ziridis-351891426-28624918.jpg");
+            background-size: cover;
+            background-position: center;
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            transition: background-image 1s ease-in-out;
+        }
+
+        #Contact .cont {
+            width: 80%;
+            height: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: #5d5d5d solid 2px;
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(0.5rem);
+            position: relative;
+            animation: fadeIn 1s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        #Contact .cont:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        #Contact .text{
+            text-align: center;
+            position: absolute;
+            top: 5px;
+        }
+        #Contact .text h4 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fff;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        #Contact .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #Contact .item .con ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #fff;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 20px; /* Adjust gap between items */
+        }
+        #Contact .item .con ul a{
+            color: #fff;
+            text-decoration: none;
+        }
+        #Contact .item .con ul li {
+            background-color: rgba(0, 0, 0, 0.3); /* Darker, more prominent background */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Lighter, subtle border */
+            border-radius: 12px; /* More rounded corners for card look */
+            padding: 25px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px; /* Increased height for card */
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        #Contact .item .con ul li:hover {
+            background-color: rgba(0, 0, 0, 0.5); /* Darker on hover */
+            transform: translateY(-10px) scale(1.05); /* More pronounced lift and scale */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
+            border-color: #00BFFF; /* Vibrant blue border on hover */
+        }
+
+        #Contact .item .con ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.4rem; /* Larger font size for prominence */
+            font-weight: bold; /* Bold text for readability */
+            margin-top: 15px;
+            transition: color 0.3s ease;
+        }
+
+        #Contact .item .con ul li a:hover {
+            color: #00FFFF; /* Brighter cyan on hover */
+        }
+
+        #Contact .item .con ul li i {
+            font-size: 3.5rem; /* Larger icons */
+            color: #007BFF; /* Primary blue icon color */
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+            animation: bounce 2s infinite; /* Keep icon bounce */
+        }
+
+        #Contact .item .con ul li:hover i {
+            transform: translateY(-8px) rotate(8deg); /* More dynamic icon hover */
+            color: #00BFFF; /* Lighter blue on hover */
+        }
+
+        /* Responsive adjustments for Contact section */
+        @media (max-width: 768px) {
+            #Contact .item .con ul li {
+                padding: 20px;
+                min-height: 120px;
+            }
+            #Contact .item .con ul li a {
+                font-size: 1.2rem;
+            }
+            #Contact .item .con ul li i {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #Contact .item .con ul li {
+                padding: 15px;
+                min-height: 100px;
+            }
+            #Contact .item .con ul li a {
+                font-size: 1.1rem;
+            }
+            #Contact .item .con ul li i {
+                font-size: 2.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <p>Phantom-team</p>
+        <nav>
+            <a href="#Home">Home</a>
+            <a href="#Aboutus">About us</a>
+            <a href="#OurServices">Services</a>
+            <a href="#OurPortfolio">Portfolio</a>
+            <a href="#Contact">Contact</a>
+        </nav>
+    </header>
+    <section id="Home">
+        <div>
+            <h4>Hello There</h4>
+            <h1>We Are Phantom Team</h1>
+            <p>Welcome to our world!</p>
+            <a href="#OurPortfolio">Explore</a>
+            <a href="#Contact">Contact Me</a>
+        </div>
+    </section>
+
+
+    <section id="Aboutus">
+        <div class="cont">
+            <div class="text">
+                <h4>Hello, We Are Phantom-Team, a Professional Photographer Based in Egypt</h4>
+                <p>
+                    I became interested in landscape photography about Seven years ago. 
+                    During the week, I had a full-time job, and I spent my weekends exploring and getting as far away 
+                    from the city as possible. This passion has shaped my career and vision as a photographer.
+                </p>
+                <ul>
+                    <li><i class="fa fa-briefcase"></i> 5 Years of Experience</li>
+                    <li><i class="fa fa-phone"></i> Phone: +1 (555) 123-4567</li>
+                    <li><i class="fa fa-envelope"></i> E-mail: contact@phantomteam.com</li>
+                </ul>                
+            </div>
+            <div class="img">
+                <img src="background/manipulation-4225382.jpg" alt="A stunning photo manipulation artwork">
+            </div>
+        </div>
+    </section>
+
+    <br><br><br><br><br><br>
+    <section id="OurServices">
+        <div class="cont">
+            <div class="text">
+                <h4>Our Services</h4>
+            </div>
+            <div class="item">
+                <div class="service-item">
+                    <img src="icon/icon-1.png" alt="Service Icon 1" loading="lazy">
+                    <br>
+                    <h5>Photography</h5>
+                    <span>
+                        Capture life's most precious moments with our expert photography services. Whether it's a wedding, family portraits, corporate events, or product photography, we bring creativity, precision, and passion to every shot.                    </span>
+                </div>
+                <br><br><br>
+            </div>
+        </div>
+    </section>
+    
+    <section id="OurPortfolio">
+        <div id="cont">
+            <div class="text">
+                <h4>Our Portfolio</h4>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <img src="protofile/IMG_5159.jpg" alt="Portfolio Image 1" loading="lazy">
+                    <img src="protofile/IMG-20241123-WA0048.jpg" alt="Portfolio Image 4" loading="lazy">
+                    <img src="protofile/IMG-20241126-WA0071.jpg" alt="Portfolio Image 5" loading="lazy">
+                    <img src="protofile/IMG-20241126-WA0091.jpg" alt="Portfolio Image 6" loading="lazy">
+                    <img src="protofile/IMG-20241126-WA0111.jpg" alt="Portfolio Image 7" loading="lazy">
+                    <img src="protofile/IMG-20241126-WA0131.jpg" alt="Portfolio Image 8" loading="lazy">
+                    <img src="protofile/IMG-20241126-WA0139.jpg" alt="Portfolio Image 9" loading="lazy">
+                    <img src="protofile/IMG_20241115_095708_812.jpg" alt="Portfolio Image 10" loading="lazy">
+                    <img src="protofile/IMG_5223.jpg" alt="Portfolio Image 12" loading="lazy">
+                    <img src="protofile/IMG_5256.jpg" alt="Portfolio Image 13" loading="lazy">
+                    <img src="protofile/IMG_5354.jpg" alt="Portfolio Image 14" loading="lazy">
+                    <img src="protofile/IMG-20241117-WA0008_1.jpg" alt="Portfolio Image 15" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="Contact">
+        <div class="cont">
+            <div class="text">
+                <h4>Contact</h4>
+            </div>
+            <div class="item">
+                <div class="con">
+                    <ul>
+                        <li>
+                            <a href="#" target="_blank">
+                            <i class="fab fa-facebook"></i> Facebook</a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-phone"></i> +1 (555) 123-4567</a>
+                        </li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-envelope"></i> Email</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+     
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const container = document.querySelector('#OurPortfolio .item .img');
+        const images = Array.from(container.getElementsByTagName('img'));
+
+        // Function to shuffle images randomly
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+            }
+        }
+
+        // Shuffle the images array
+        shuffleArray(images);
+
+        // Append the shuffled images back into the container
+        images.forEach(image => container.appendChild(image));
+        let image = [ "url('background/pexels-markrz-15104799.jpg')","url('background/pexels-andre-furtado-43594-2916821.jpg')"];
+        let index = 0;
+
+        setInterval(() => {
+            const homeElement = document.getElementById('Home');
+            if (homeElement) {
+                homeElement.style.backgroundImage = image[index];
+                index = (index + 1) % image.length; // Cycle through images
+            } else {
+                console.error("Element with id 'Home' not found.");
+            }
+        }, 5000);
+    });
+</script>
+
+</body>
+</html>
